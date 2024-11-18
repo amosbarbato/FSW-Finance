@@ -1,6 +1,22 @@
-const Home = () => {
+import { auth } from "@clerk/nextjs/server"
+import { redirect } from "next/navigation"
+import Navbar from "./_components/navbar"
+
+const Home = async () => {
+  const { userId } = await auth()
+
+  if (!userId) {
+    redirect("/login")
+  }
+
   return (
-    <h1>Page</h1>
+    <>
+      <Navbar />
+
+      <div className="flex w-full items-center justify-center">
+        <h1>Transações</h1>
+      </div>
+    </>
   )
 }
 
