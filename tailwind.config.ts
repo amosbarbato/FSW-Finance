@@ -10,6 +10,7 @@ export default {
   theme: {
   	extend: {
   		colors: {
+				danger: "#ff0000",
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
