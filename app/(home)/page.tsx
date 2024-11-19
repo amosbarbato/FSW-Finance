@@ -2,8 +2,8 @@ import { isMatch } from "date-fns"
 import { auth } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
 import Navbar from "../_components/navbar"
-import TimeSelect from "../_components/time-select"
-import Summary from "../_container/summary"
+import TimeSelect from "./_components/time-select"
+import Summary from "./_components/summary"
 
 interface Params {
   searchParams: {

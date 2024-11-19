@@ -1,5 +1,5 @@
 import { PiggyBankIcon, TrendingDownIcon, TrendingUpIcon, WalletIcon } from "lucide-react"
-import SummaryItem from "../_components/summary-card"
+import SummaryItem from "../(home)/_components/summary-card"
 import { db } from "../_lib/prisma"
 
 interface Prop {

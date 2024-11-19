@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
-import AddTransactionButton from "./add-transactions-button"
-import { Card, CardContent, CardHeader } from "./ui/card"
+import AddTransactionButton from "../../_components/add-transactions-button"
+import { Card, CardContent, CardHeader } from "../../_components/ui/card"
 
 interface Props {
   icon: ReactNode
