@@ -20,11 +20,6 @@ const TransactionsPage = async () => {
 
         <DataTable columns={transactionsColumns} data={transictions} />
       </div>
-      {transictions.map((transiction) => (
-        <div key={transiction.id}>
-          {transiction.name}
-        </div>
-      ))}
     </div>
   )
 }
