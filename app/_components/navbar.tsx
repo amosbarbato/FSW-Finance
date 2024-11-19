@@ -48,7 +48,18 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <UserButton showName />
+      <UserButton
+        showName
+        appearance={{
+          elements: {
+            userButtonTrigger: 'px-4 py-2.5 border border-solid rounded-lg',
+            userButtonTrigger__open: 'bg-white/5',
+            userButtonBox: 'flex-row-reverse',
+            userButtonOuterIdentifier: 'text-white pl-0',
+            userButtonAvatarBox: 'h-6 w-6'
+          }
+        }}
+      />
     </nav>
   )
 }
