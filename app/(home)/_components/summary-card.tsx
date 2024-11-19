@@ -11,7 +11,7 @@ interface Props {
 
 const SummaryItem = ({ icon, title, amount, size }: Props) => {
   return (
-    <Card>
+    <Card className={`${size === "large" ? 'bg-white bg-opacity-5' : ""}`}>
       <CardHeader className="flex-row items-center gap-4 space-y-0">
         {icon}
         <p className={
