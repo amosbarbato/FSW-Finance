@@ -11,9 +11,11 @@ interface Props {
 
 const SummaryItem = ({ icon, title, amount, size }: Props) => {
   return (
-    <Card className={`${size === "large" ? 'bg-white bg-opacity-5' : ""}`}>
-      <CardHeader className="flex-row items-center gap-4 space-y-0">
-        {icon}
+    <Card className={`${size === "large" ? 'bg-lime-800/5' : ""}`}>
+      <CardHeader className="flex-row items-center gap-2 space-y-0">
+        <div className={`p-2 rounded-lg ${size === "large" ? "bg-black" : "bg-white/5"}`}>
+          {icon}
+        </div>
         <p className={
           `${size === "small" ? "text-muted-foreground" : "text-white opacity-70"}`
         }>
