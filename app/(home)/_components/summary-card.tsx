@@ -13,7 +13,7 @@ const SummaryItem = ({ icon, title, amount, size }: Props) => {
   return (
     <Card className={`${size === "large" ? 'bg-lime-800/5' : ""}`}>
       <CardHeader className="flex-row items-center gap-2 space-y-0">
-        <div className={`p-2 rounded-lg ${size === "large" ? "bg-black" : "bg-white/5"}`}>
+        <div className={`h-9 w-9 flex items-center justify-center rounded-lg ${size === "large" ? "bg-black" : "bg-white/5"}`}>
           {icon}
         </div>
         <p className={

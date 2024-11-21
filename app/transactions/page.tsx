@@ -5,6 +5,7 @@ import { transactionsColumns } from "./_columns"
 import Navbar from "../_components/navbar"
 import { DataTable } from "../_components/ui/data-table"
 import AddTransactionButton from "../_components/add-transactions-button"
+import { ScrollArea } from "../_components/ui/scroll-area"
 
 const TransactionsPage = async () => {
   const { userId } = await auth()
@@ -28,10 +29,12 @@ const TransactionsPage = async () => {
           <AddTransactionButton />
         </div>
 
-        <DataTable
-          columns={transactionsColumns}
-          data={JSON.parse(JSON.stringify(transictions))}
-        />
+        <ScrollArea>
+          <DataTable
+            columns={transactionsColumns}
+            data={JSON.parse(JSON.stringify(transictions))}
+          />
+        </ScrollArea>
       </div>
     </div>
   )
