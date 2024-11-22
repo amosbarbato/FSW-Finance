@@ -14,7 +14,7 @@ const TransactionsPage = async () => {
     redirect("/login")
   }
 
-  const transictions = await db.transaction.findMany({
+  const transactions = await db.transaction.findMany({
     where: { userId }
   })
 
@@ -32,7 +32,7 @@ const TransactionsPage = async () => {
         <ScrollArea>
           <DataTable
             columns={transactionsColumns}
-            data={JSON.parse(JSON.stringify(transictions))}
+            data={JSON.parse(JSON.stringify(transactions))}
           />
         </ScrollArea>
       </div>
