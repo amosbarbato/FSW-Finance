@@ -2,7 +2,7 @@
 
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/app/_components/ui/alert-dialog"
 import { Button } from "@/app/_components/ui/button"
-import { CircleXIcon, TrashIcon } from "lucide-react"
+import { CircleXIcon, Trash2Icon } from "lucide-react"
 import { deleteTransaction } from "../_actions/delete-transaction"
 import { toast } from "sonner"
 
@@ -30,7 +30,7 @@ const DeleteTransaction = ({ transactionId }: Prop) => {
             size="icon"
             className="text-muted-foreground"
           >
-            <TrashIcon />
+            <Trash2Icon />
           </Button>
         </AlertDialogTrigger>
 
