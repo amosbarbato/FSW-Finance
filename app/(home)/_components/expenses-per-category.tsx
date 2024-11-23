@@ -1,6 +1,7 @@
 import { CardContent, CardHeader, CardTitle } from "@/app/_components/ui/card"
 import { Progress } from "@/app/_components/ui/progress"
 import { ScrollArea } from "@/app/_components/ui/scroll-area"
+import { TRANSACTION_CATEGORY_LABELS } from "@/app/_constants/transactions"
 import { TotalExpensePerCategory } from "@/app/_data/get-dashboard/types"
 
 interface Prop {
@@ -14,12 +15,16 @@ const ExpensesPerCategory = ({ expensePerCategory }: Prop) => {
         <CardTitle className="font-bold pb-6 border-b">Gastos por Categoria</CardTitle>
       </CardHeader>
 
-      <CardContent className="">
+      <CardContent className="space-y-6">
         {expensePerCategory.map(category => (
           <div key={category.category} className="space-y-2">
             <div className="flex justify-between w-full">
-              <p className="text-sm font-bold">Moradia</p>
-              <p className="text-sm font-bold">50%</p>
+              <p className="text-sm font-bold">
+                {TRANSACTION_CATEGORY_LABELS[category.category]}
+              </p>
+              <p className="text-sm font-bold">
+                {category.percentageOfTotal}%
+              </p>
             </div>
             <Progress value={category.percentageOfTotal} />
           </div>
