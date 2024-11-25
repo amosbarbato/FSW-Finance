@@ -242,16 +242,17 @@ const ModifiedTransactionDialog = ({
               <p className="font-bold">Deletar Transação</p>
               <Trash2Icon size={16} />
             </div>
-          </form>
 
-          <SheetFooter>
-            <SheetClose asChild>
-              <Button type="button" variant="outline" className="w-full">Cancelar</Button>
-            </SheetClose>
-            <Button type="submit" className="w-full">
-              {isUpdate ? "Atualizar" : "Adicionar"}
-            </Button>
-          </SheetFooter>
+            <SheetFooter>
+              <SheetClose asChild>
+                <Button type="button" variant="outline" className="w-full">Cancelar</Button>
+              </SheetClose>
+              <Button type="submit" className="w-full">
+                {isUpdate ? "Atualizar" : "Adicionar"}
+              </Button>
+            </SheetFooter>
+
+          </form>
         </Form>
       </SheetContent>
 
