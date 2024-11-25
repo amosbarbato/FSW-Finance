@@ -1,7 +1,7 @@
 "use client"
 
+import ModifiedTransactionDialog from "@/app/_components/modified-transactions"
 import { Button } from "@/app/_components/ui/button"
-import UpsertTransactionDialog from "@/app/_components/upsert-transactions"
 import { Transaction } from "@prisma/client"
 import { ExternalLinkIcon } from "lucide-react"
 import { useState } from "react"
@@ -23,7 +23,7 @@ const EditTransaction = ({ transaction }: Props) => {
       >
         <ExternalLinkIcon />
       </Button>
-      <UpsertTransactionDialog
+      <ModifiedTransactionDialog
         isOpen={dialogIsOpen}
         setIsOpen={setDialogIsOpen}
         defaultValues={{
