@@ -52,6 +52,7 @@ const UpsertTransactionDialog = ({
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
+    mode: "onChange",
     defaultValues: defaultValues ?? {
       amount: 50,
       category: TransactionCategory.OTHER,
@@ -72,8 +73,6 @@ const UpsertTransactionDialog = ({
     }
   };
 
-  const isUpdate = Boolean(transactionId)
-
   return (
     <Dialog
       open={isOpen}
@@ -87,9 +86,7 @@ const UpsertTransactionDialog = ({
       <DialogTrigger asChild></DialogTrigger>
       <DialogContent className="w-[350px]">
         <DialogHeader>
-          <DialogTitle className="text-center">
-            {isUpdate ? "Atualizar" : "Adicionar"} transação
-          </DialogTitle>
+          <DialogTitle className="text-center">Adicionar transação</DialogTitle>
           <DialogDescription className="text-center">
             Insira as informações abaixo
           </DialogDescription>
@@ -237,8 +234,11 @@ const UpsertTransactionDialog = ({
               <DialogClose asChild>
                 <Button type="button" variant="outline">Cancelar</Button>
               </DialogClose>
-              <Button type="submit">
-                {isUpdate ? "Atualizar" : "Adicionar"}
+              <Button
+                type="submit"
+                disabled={!form.formState.isValid && !form.formState.isSubmitted}
+              >
+                Adicionar
               </Button>
             </DialogFooter>
           </form>

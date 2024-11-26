@@ -1,19 +1,21 @@
+import { useState } from "react"
+import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { toast } from "sonner"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TransactionCategory, TransactionPaymentMethod, TransactionType } from "@prisma/client"
+import { TRANSACTION_CATEGORY_OPTIONS, TRANSACTION_PAYMENT_METHOD_OPTIONS, TRANSACTION_TYPE_OPTIONS } from "../_constants/transactions"
+import { upsertTransaction } from "../_actions/upsert-transactions"
+
 import { Button } from "./ui/button"
-import { useForm } from "react-hook-form"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form"
 import { Input } from "./ui/input"
 import { MoneyInput } from "./money-input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
-import { TRANSACTION_CATEGORY_OPTIONS, TRANSACTION_PAYMENT_METHOD_OPTIONS, TRANSACTION_TYPE_OPTIONS } from "../_constants/transactions"
 import { DatePikcer } from "./ui/date-picker"
-import { upsertTransaction } from "../_actions/upsert-transactions"
 import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet"
-import { Trash2Icon } from "lucide-react"
 import DeleteTransactionConfirm from "./delete-transaction"
-import { useState } from "react"
+import { Trash2Icon } from "lucide-react"
 
 interface Props {
   isOpen: boolean
@@ -56,6 +58,7 @@ const ModifiedTransactionDialog = ({
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
+    mode: "onChange",
     defaultValues: defaultValues ?? {
       amount: 50,
       category: TransactionCategory.OTHER,
@@ -76,8 +79,6 @@ const ModifiedTransactionDialog = ({
     }
   };
 
-  const isUpdate = Boolean(transactionId)
-
   return (
     <Sheet
       open={isOpen}
@@ -91,9 +92,7 @@ const ModifiedTransactionDialog = ({
       <SheetTrigger asChild></SheetTrigger>
       <SheetContent>
         <SheetHeader className="border-b">
-          <SheetTitle>
-            {isUpdate ? "Atualizar" : "Adicionar"} transação
-          </SheetTitle>
+          <SheetTitle>Atualizar transação</SheetTitle>
         </SheetHeader>
 
         <Form {...form}>
@@ -247,8 +246,16 @@ const ModifiedTransactionDialog = ({
               <SheetClose asChild>
                 <Button type="button" variant="outline" className="w-full">Cancelar</Button>
               </SheetClose>
-              <Button type="submit" className="w-full">
-                {isUpdate ? "Atualizar" : "Adicionar"}
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={!form.formState.isValid && !form.formState.isSubmitted}
+                onClick={() =>
+                  toast.success("Alterações feitas", {
+                    description: "As alterações foram salvas com sucesso!"
+                  })}
+              >
+                Atualizar
               </Button>
             </SheetFooter>
 
