@@ -5,7 +5,7 @@ import Stripe from "stripe"
 export const StripeCheckout = async () => {
   const { userId } = await auth()
 
-  if (userId) {
+  if (!userId) {
     throw new Error('Unauthorized');
   }
 
@@ -23,9 +23,7 @@ export const StripeCheckout = async () => {
     success_url: "http://localhost:3000",
     cancel_url: "http://localhost:3000",
     subscription_data: {
-      metadata: {
-        clerk_user_id: userId
-      }
+      metadata: { clerk_user_id: userId }
     },
     line_items: [{
       price: process.env.STRIPE_PREMIUM_PLAN_PRICE_ID,
