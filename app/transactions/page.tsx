@@ -29,7 +29,9 @@ const TransactionsPage = async () => {
           <h1 className="text-2xl font-bold">
             Transações
           </h1>
-          <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
+          <AddTransactionButton
+            userCanAddTransaction={JSON.parse(JSON.stringify(userCanAddTransaction))}
+          />
         </div>
 
         <ScrollArea>

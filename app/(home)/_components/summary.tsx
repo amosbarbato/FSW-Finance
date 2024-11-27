@@ -18,27 +18,26 @@ const Summary = async ({ balance, depositsTotal, expensesTotal, investmentsTotal
         title="Saldo"
         amount={balance}
         size="large"
-        userCanAddTransaction={userCanAddTransaction}
+        userCanAddTransaction={JSON.parse(JSON.stringify(userCanAddTransaction))}
       />
 
       <div className="grid grid-cols-3 gap-6">
         <SummaryItem
           icon={<PiggyBankIcon size={16} />}
           title="Investido"
-          amount={investmentsTotal}
+          amount={JSON.parse(JSON.stringify(investmentsTotal))}
           size="small"
-          userCanAddTransaction={userCanAddTransaction}
         />
         <SummaryItem
           icon={<TrendingUpIcon size={18} className="text-primary" />}
           title="Receita"
-          amount={depositsTotal}
+          amount={JSON.parse(JSON.stringify(depositsTotal))}
           size="small"
         />
         <SummaryItem
           icon={<TrendingDownIcon size={18} className="text-red-500" />}
           title="Despesas"
-          amount={expensesTotal}
+          amount={JSON.parse(JSON.stringify(expensesTotal))}
           size="small"
         />
       </div>
