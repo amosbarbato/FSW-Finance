@@ -16,6 +16,7 @@ const Subscription = async () => {
 
   const { user } = (await clerkClient()).users.getUser(userId)
   const currentMonthTransactions = await getCurrentMonthTransactions()
+  const hasPremiumPlan = user?.publicMetadata.subscriptionPlan == "premium"
 
   return (
     <>
