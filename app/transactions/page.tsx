@@ -6,6 +6,7 @@ import Navbar from "../_components/navbar"
 import { DataTable } from "../_components/ui/data-table"
 import AddTransactionButton from "../_components/add-transactions-button"
 import { ScrollArea } from "../_components/ui/scroll-area"
+import { canUserAddTransactions } from "../_data/get-dashboard/can-user-add-transactions"
 
 const TransactionsPage = async () => {
   const { userId } = await auth()
@@ -18,6 +19,8 @@ const TransactionsPage = async () => {
     where: { userId }
   })
 
+  const userCanAddTransaction = await canUserAddTransactions()
+
   return (
     <div>
       <Navbar />
@@ -26,7 +29,7 @@ const TransactionsPage = async () => {
           <h1 className="text-2xl font-bold">
             Transações
           </h1>
-          <AddTransactionButton />
+          <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
         </div>
 
         <ScrollArea>

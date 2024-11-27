@@ -6,16 +6,16 @@ import { CheckIcon, XIcon } from "lucide-react"
 import { Button } from "../_components/ui/button"
 import AcquirePlanButton from "./_components/acquire-plan-button"
 import { Badge } from "../_components/ui/badge"
+import { getCurrentMonthTransactions } from "../_data/get-dashboard/get-current-month-transactions"
 
 const Subscription = async () => {
   const { userId } = await auth()
-
   if (!userId) {
     redirect("/login")
   }
 
   const { user } = (await clerkClient()).users.getUser(userId)
-  const hasPremiumPlan = user?.publicMetadata.subscriptionPlan == "premium"
+  const currentMonthTransactions = await getCurrentMonthTransactions()
 
   return (
     <>
@@ -40,7 +40,7 @@ const Subscription = async () => {
               <div className="space-y-4 pb-8">
                 <div className="flex items-center gap-2">
                   <CheckIcon className="text-primary" />
-                  <p>Apenas 10 transações por dia 7/10</p>
+                  <p>Apenas 10 transações por dia ({currentMonthTransactions}/10)</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <XIcon />

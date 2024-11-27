@@ -7,9 +7,10 @@ interface Prop {
   depositsTotal: number;
   investmentsTotal: number;
   expensesTotal: number;
+  userCanAddTransaction?: boolean
 }
 
-const Summary = async ({ balance, depositsTotal, expensesTotal, investmentsTotal }: Prop) => {
+const Summary = async ({ balance, depositsTotal, expensesTotal, investmentsTotal, userCanAddTransaction }: Prop) => {
   return (
     <div className="space-y-6">
       <SummaryItem
@@ -17,6 +18,7 @@ const Summary = async ({ balance, depositsTotal, expensesTotal, investmentsTotal
         title="Saldo"
         amount={balance}
         size="large"
+        userCanAddTransaction={userCanAddTransaction}
       />
 
       <div className="grid grid-cols-3 gap-6">
@@ -25,6 +27,7 @@ const Summary = async ({ balance, depositsTotal, expensesTotal, investmentsTotal
           title="Investido"
           amount={investmentsTotal}
           size="small"
+          userCanAddTransaction={userCanAddTransaction}
         />
         <SummaryItem
           icon={<TrendingUpIcon size={18} className="text-primary" />}

@@ -7,9 +7,10 @@ interface Props {
   title: string
   amount: number
   size?: "small" | "large"
+  userCanAddTransaction?: boolean
 }
 
-const SummaryItem = ({ icon, title, amount, size }: Props) => {
+const SummaryItem = ({ icon, title, amount, size, userCanAddTransaction }: Props) => {
   return (
     <Card className={`${size === "large" ? 'bg-lime-800/5' : ""}`}>
       <CardHeader className="flex-row items-center gap-2 space-y-0">
@@ -32,7 +33,7 @@ const SummaryItem = ({ icon, title, amount, size }: Props) => {
             currency: "BRL"
           }).format(amount)}
         </p>
-        {size === "large" && <AddTransactionButton />}
+        {size === "large" && <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />}
       </CardContent>
     </Card>
   )
